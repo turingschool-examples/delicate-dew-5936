@@ -46,7 +46,7 @@ RSpec.describe "mechanics/show.html.erb", type: :feature do
     fill_in("Ride Id:", with: "#{ride_1.id}")
     fill_in("Ride Id:", with: "#{ride_2.id}")
     click_button("Put that Carny to work!")
-    
+
     expect(page).to have_content(ride_1.name)
     expect(page).to have_content(ride_2.name)
     # example
@@ -54,4 +54,6 @@ RSpec.describe "mechanics/show.html.erb", type: :feature do
     # Ride Id: |_pretend_this_is_a_textfield_|
     # Submit
   end
+
+  
 end
