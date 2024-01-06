@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "mechanics/show.html.erb", type: :view do
+RSpec.describe "mechanics/show.html.erb", type: :feature do
 
   it "completes User Story 1 - Mechanic Show Page" do
   
-    @mechanic = Mechanic.create!(name: "Kara Smith", years_experience: 11)
+    mechanic = Mechanic.create!(name: "Kara Smith", years_experience: 11)
 
     # As a user,
     # When I visit a mechanic show page
