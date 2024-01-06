@@ -1,2 +1,10 @@
-<h1>Mechanics#show</h1>
-<p>Find me in app/views/mechanics/show.html.erb</p>
+<h1>Mechanics Show Page</h1>
+<h2>Mechanic with Rides</h2>
+  <p>Mechanic's Name: $<%= @mechanic.name %>
+  <br>
+  <p>Years of Exp: <%= @mechanic.id %>
+  <br>
+   <% @ride.mechanics.each do |mechanic| %>
+    <p>Associated Ride(s): <%= @mechanic.ride.name %>
+
+  <% end %>
