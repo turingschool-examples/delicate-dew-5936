@@ -14,10 +14,12 @@ RSpec.describe "mechanics/show.html.erb", type: :feature do
     # As a user,
     # When I visit a mechanic show page
     visit mechanic_path(mechanic)
+    save_and_open_page
     # I see their name, years of experience, and the names of all rides they are working on.
     expect(page).to have_content(mechanic.name)
     expect(page).to have_content(mechanic.years_experience)
     # and the names of all rides they are working on.
-
+    expect(page).to have_content(ride_1.name)
+    expect(page).to have_content(ride_2.name)
   end
 end

@@ -1,10 +1,9 @@
 <h1>Mechanics Show Page</h1>
 <h2>Mechanic with Rides</h2>
-  <p>Mechanic's Name: $<%= @mechanic.name %>
+  <p>Mechanic's Name: <%= @mechanic.name %>
   <br>
-  <p>Years of Exp: <%= @mechanic.id %>
+  <p>Years of Exp: <%= @mechanic.years_experience %>
   <br>
-   <% @ride.mechanics.each do |mechanic| %>
-    <p>Associated Ride(s): <%= @mechanic.ride.name %>
-
+   <% @mechanic.rides.each do |ride| %>
+    <p>Associated Ride(s): <%= ride.name %>
   <% end %>
