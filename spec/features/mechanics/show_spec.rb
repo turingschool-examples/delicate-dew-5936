@@ -37,6 +37,7 @@ RSpec.describe "mechanics/show.html.erb", type: :feature do
     expect(page).to have_button("Put that Carny to work!")
     # When I fill in that field with an id of an existing ride and click Submit
     fill_in("Ride Id:", with: "#{ride_1.id}")
+    save_and_open_page
     click_button("Put that Carny to work!")
     # I’m taken back to that mechanic's show page
     # And I see the name of that newly added ride on this mechanic's show page.

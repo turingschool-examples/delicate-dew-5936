@@ -4,11 +4,11 @@ class MechanicsController < ApplicationController
   end
 
   def create 
-    @mechanic = Mechanic.new(mechanic_params)
-    if @mechanic.save
-      redirect_to @mechanic
-    else
-      render :new
-    end
+    @mechanic = Mechanic.new(@mechanic_params)
+    # if @mechanic.save
+    #   redirect_to @mechanic
+    # else
+    #   render :new
+    # end
   end
 end
