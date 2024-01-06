@@ -3,12 +3,12 @@ class MechanicsController < ApplicationController
     @mechanic = Mechanic.find(params[:id])
   end
 
-  def create 
-    @mechanic = Mechanic.new(@mechanic_params)
-    # if @mechanic.save
-    #   redirect_to @mechanic
-    # else
-    #   render :new
-    # end
+  def edit
+    @mechanic = Mechanic.find(params[:id])
+    @ride = Ride.find(params[:ride_id])
+
+    @mechanic.rides << @ride
+
+    redirect_to mechanic_path(@mechanic)
   end
 end

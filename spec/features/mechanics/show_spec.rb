@@ -28,7 +28,7 @@ RSpec.describe "mechanics/show.html.erb", type: :feature do
     ride_1 = amusement_park.rides.create!(name: "The Hurler", thrill_rating: 7, open: false)
     ride_2 = amusement_park.rides.create!(name: "Tilt-a-Whirl", thrill_rating: 11, open: true)
     mechanic = Mechanic.create!(name: "Kara Smith", years_experience: 11)
-
+    
     # As a user,
     # When I go to a mechanic's show page
     visit mechanic_path(mechanic)
@@ -36,12 +36,19 @@ RSpec.describe "mechanics/show.html.erb", type: :feature do
     expect(page).to have_field("Ride Id:")
     expect(page).to have_button("Put that Carny to work!")
     # When I fill in that field with an id of an existing ride and click Submit
-    fill_in("Ride Id:", with: "#{ride_1.id}")
-    save_and_open_page
-    click_button("Put that Carny to work!")
     # I’m taken back to that mechanic's show page
     # And I see the name of that newly added ride on this mechanic's show page.
-
+    fill_in("Ride Id:", with: "#{ride_1.id}")
+    click_button("Put that Carny to work!")
+    expect(page).to have_content(ride_1.name)
+    expect(page).to_not have_content(ride_2.name)
+# edge case
+    fill_in("Ride Id:", with: "#{ride_1.id}")
+    fill_in("Ride Id:", with: "#{ride_2.id}")
+    click_button("Put that Carny to work!")
+    
+    expect(page).to have_content(ride_1.name)
+    expect(page).to have_content(ride_2.name)
     # example
     # Add a ride to workload:
     # Ride Id: |_pretend_this_is_a_textfield_|
