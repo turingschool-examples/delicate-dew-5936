@@ -1,0 +1,15 @@
+<h1>Employee Information</h1>
+
+<h2><ul>
+  <li>Name: <%= @mechanic.name %></li>
+  <li>Experience: <%= @mechanic.years_experience %> Years</li>
+</ul></h2>
+
+<h1>Rides I'm Working On:</h1>
+
+<h3><% @mechanic.rides.each do |ride| %>
+  <ul>
+    <li><%= ride.name %></li>
+  </ul>
+  <% end %>
+</h3>
