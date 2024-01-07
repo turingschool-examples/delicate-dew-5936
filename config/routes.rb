@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :mechanics, only: [:show]
+  resources :mechanic_rides, only: [:new, :create]
 end

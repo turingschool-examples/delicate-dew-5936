@@ -36,4 +36,16 @@ RSpec.describe Mechanic, type: :feature do
     expect(page).to_not have_content(@ferris.name)
     expect(page).to_not have_content(@hurler.name)
   end
+
+  it "has a form to add a new ride to mechanics docket" do
+    visit "/mechanics/#{@mechanic_2.id}"
+
+    expect(page).to have_selector('form#Add_Ride')
+    fill_in "ride_id", with: @ferris.id
+    click_button "Submit"
+
+    expect(current_path).to eq("/mechanics/#{@mechanic_2.id}")
+    expect(page).to have_content("Ferris Wheel")
+    
+  end
 end
