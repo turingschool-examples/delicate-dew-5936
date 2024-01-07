@@ -37,7 +37,7 @@ RSpec.describe "Mechanics show page", type: :feature do
     expect(page).to have_content("Unknown Fate")
     expect(page).to_not have_content("Volcano Kiss")
     expect(page).to have_content("Add Ride")
-save_and_open_page
+
     fill_in "Ride", with: ride4.id
     click_button "Submit"
 
