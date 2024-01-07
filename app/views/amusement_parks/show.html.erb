@@ -1,0 +1,14 @@
+<h1><%= @park.name %></h1>
+
+<h2>Price of Admission: $<%= @park.admission_cost%></h2>
+
+<h3>Mechanics Working on This Park's Rides:</h3>
+
+<h4><% @park.rides.each do |ride| %>
+      <% ride.mechanics.each do |mechanic| %>
+  <ul>
+    <li><%= mechanic.name %>, Years Experience: <%= mechanic.years_experience %></li>
+  </ul>
+    <% end %>
+  <% end %>
+</h4>

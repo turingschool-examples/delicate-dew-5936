@@ -13,11 +13,11 @@ RSpec.describe "AmusementPark show page", type: :feature do
     mechanic2.rides << [ride1, ride2, ride3]
     mechanic3.rides << [ride1, ride2, ride3]
 
-    visit amusement_park_path(park1) #park1.rides[0].mechanics
-
+    visit amusement_park_path(park1)
+save_and_open_page
     expect(page).to have_content("Happy Go Lucky Times Fun World Great Job")
     expect(page).to have_content("Price of Admission: $799")
-    expect(page).to have_content("Mechanics working on this park's rides:")
+    expect(page).to have_content("Mechanics Working on This Park's Rides:")
     expect(page).to have_content("Bill Jackson, Years Experience: 1")
     expect(page).to have_content("Leonard Cohen, Years Experience: 57")
     expect(page).to have_content("Crabdul, Years Experience: 20")
