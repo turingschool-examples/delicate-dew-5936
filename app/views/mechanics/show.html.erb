@@ -1,9 +1,17 @@
-<h1>Employee Information</h1>
+<h1>Employee Information:</h1>
 
 <h2><ul>
   <li>Name: <%= @mechanic.name %></li>
   <li>Experience: <%= @mechanic.years_experience %> Years</li>
 </ul></h2>
+
+<h3>Add Rides</h3>
+
+<%= form_with url: mechanic_rides_path(@mechanic.id), method: :post, local: true do |form| %>
+  <%= form.label :ride_id %>
+  <%= form.text_field :ride_id %> 
+  <%= form.submit "Submit" %>
+<% end %>
 
 <h1>Rides I'm Working On:</h1>
 
