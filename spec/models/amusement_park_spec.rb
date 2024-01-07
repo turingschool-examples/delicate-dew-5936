@@ -6,7 +6,7 @@ RSpec.describe AmusementPark, type: :model do
   end
 
   describe "instrance methods" do
-    xit "has a #unique_mechanics method" do
+    it "has a #unique_mechanics method" do
     park1 = AmusementPark.create!(name: "Happy Go Lucky Times Fun World Great Job", admission_cost: 799)
     ride1 = park1.rides.create!(name: "Flying Pancakes", thrill_rating: 3, open: false)
     ride2 = park1.rides.create!(name: "Unknown Fate", thrill_rating: 7, open: false)

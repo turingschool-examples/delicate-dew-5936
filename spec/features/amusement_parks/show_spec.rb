@@ -14,7 +14,7 @@ RSpec.describe "AmusementPark show page", type: :feature do
     mechanic3.rides << [ride1, ride2, ride3]
 
     visit amusement_park_path(park1)
-save_and_open_page
+
     expect(page).to have_content("Happy Go Lucky Times Fun World Great Job")
     expect(page).to have_content("Price of Admission: $799")
     expect(page).to have_content("Mechanics Working on This Park's Rides:")
