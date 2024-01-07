@@ -1,0 +1,20 @@
+<h1><%= @park.name %> </h1>
+
+<p> Admission Cost: <%= @park.admission_cost %> </p>
+
+<p> 
+<h4> Mechanics Assigned to the Park: </h4>
+<% @mechanics.each do |mechanic| %>
+  <%= mechanic.name %>
+  <br>
+<% end %>
+</p>
+
+
+<p>
+  Rides:
+  <% @rides.each do |ride| %>
+  <p id=<%="ride-#{ride.id}"%>>
+    <%= ride.name %>
+  <% end %>
+</p>
