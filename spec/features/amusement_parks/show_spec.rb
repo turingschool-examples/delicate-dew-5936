@@ -1,12 +1,7 @@
 require "rails_helper"
 
-RSpec.describe AmusementPark, type: :model do
-  describe "relationships" do
-    it { should have_many(:rides) }
-  end
-
-  describe "instrance methods" do
-    it "has a #unique_mechanics method" do
+RSpec.describe "AmusementPark show page", type: :feature do
+  it "has the name and price for the park, and a unique list of mechanics working on the park's rides" do
     park1 = AmusementPark.create!(name: "Happy Go Lucky Times Fun World Great Job", admission_cost: 799)
     ride1 = park1.rides.create!(name: "Flying Pancakes", thrill_rating: 3, open: false)
     ride2 = park1.rides.create!(name: "Unknown Fate", thrill_rating: 7, open: false)
@@ -18,8 +13,13 @@ RSpec.describe AmusementPark, type: :model do
     mechanic2.rides << [ride1, ride2, ride3]
     mechanic3.rides << [ride1, ride2, ride3]
 
-    expect(park1.unique_mechanics).to eq([mechanic1, mechanic2, mechanic3])
-    expect(park1.unique_mechanics.length).to eq(3)
-    end
+    visit amusement_park_path(park1)
+
+    expect(page).to have_content("Happy Go Lucky Times Fun World Great Job")
+    expect(page).to have_content("Price of Admission: $799")
+    expect(page).to have_content("Mechanics Working on This Park's Rides:")
+    expect(page).to have_content("Bill Jackson, Years Experience: 1")
+    expect(page).to have_content("Leonard Cohen, Years Experience: 57")
+    expect(page).to have_content("Crabdul, Years Experience: 20")
   end
 end
