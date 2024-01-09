@@ -63,12 +63,8 @@ RSpec.describe "the mechanics show page" do
 
             expect(page).to_not have_content(@ride_2.name)
 
-            save_and_open_page
-
             fill_in :form_ride_id, with: "#{@ride_2.id}"
             click_button "Submit"
-
-            save_and_open_page
 
             expect(page).to have_content(@ride_2.name)
         end
