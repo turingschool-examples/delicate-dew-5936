@@ -1,0 +1,19 @@
+<h1> Your Mechanic's Show Page</h1>
+
+
+<h2>Name: <%= @mechanic.name %></h2>
+
+<p> Years of Experience: <%= @mechanic.years_experience %> </p>
+
+<p> Rides Assigned to Mechanic:
+  <% @rides.each do |ride| %>
+    <%= ride.name %>
+  <% end %>
+</p>
+
+<p> Add a Ride to Mechanic's Docket: </p>
+<%= form_with url: "/mechanic_rides?mechanic_id=#{@mechanic.id}", html: { id: "Add_Ride"}, data: {turbo: false} do |f| %>
+  <%= f.label "Ride ID" %>
+  <%= f.text_field "ride_id" %>
+  <%= f.submit :Submit %>
+<% end %>
