@@ -1,3 +1,6 @@
+time start: 12:32EST
+time end: 12:33EST
+
 # Railer Coaster
 
 This repository requires and has been tested on Ruby v3.2.2 and is based on Rails 7.0.6.
