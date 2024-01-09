@@ -16,3 +16,11 @@ Ride.destroy_all
 @ferris = @six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
 
 @jaws = @universal.rides.create!(name: 'Jaws', thrill_rating: 5, open: true)
+
+@park = AmusementPark.create!(name: "Blonkoland", admission_cost: 20)
+@ride = @park.rides.create!(name: "The Pukinator", thrill_rating: 7, open: true)
+@mechanic = @ride.mechanics.create!(name: "Mario", years_experience: 32)
+
+@ride_2 = @park.rides.create!(name: "The Reverse Mortgage", thrill_rating: 10, open: false)
+@ride_3 = @park.rides.create!(name: "Bagman's Crumper", thrill_rating: 3, open: true)
+@mechanic.rides << @ride_2
