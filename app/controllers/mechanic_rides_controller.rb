@@ -5,6 +5,6 @@ class MechanicRidesController < ApplicationController
 
         mechanic.rides << ride
 
-        redirect_to "/mechanics/#{mechanic.id}"
+        redirect_to mechanic_path(mechanic.id)
     end
 end

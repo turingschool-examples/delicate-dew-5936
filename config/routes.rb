@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :mechanics
 
   resources :mechanic_rides
+
+  resources :amusement_parks
 end

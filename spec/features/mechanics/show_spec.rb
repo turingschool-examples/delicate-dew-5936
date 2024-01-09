@@ -13,13 +13,13 @@ RSpec.describe "the mechanics show page" do
         end
     
         it "displays the mechanic's name" do
-            visit "/mechanics/#{@mechanic.id}"
+            visit mechanic_path(@mechanic.id)
     
             expect(page).to have_content(@mechanic.name)
         end
     
         it "displays the mechanic's years of experience" do
-            visit "/mechanics/#{@mechanic.id}"
+            visit mechanic_path(@mechanic.id)
     
             expect(page).to have_content("Years of Experience: #{@mechanic.years_experience}")
         end
@@ -29,7 +29,7 @@ RSpec.describe "the mechanics show page" do
             @ride_3 = @park.rides.create!(name: "Bagman's Crumper", thrill_rating: 3, open: true)
             @mechanic.rides << @ride_2
 
-            visit "/mechanics/#{@mechanic.id}"
+            visit mechanic_path(@mechanic.id)
 
             expect(page).to have_content(@ride.name)
             expect(page).to have_content(@ride_2.name)
@@ -53,13 +53,13 @@ RSpec.describe "the mechanics show page" do
         end
 
         it "shows a form to add an existing ride to the mechanic" do
-            visit "/mechanics/#{@mechanic.id}"
+            visit mechanic_path(@mechanic.id)
     
             expect(page).to have_field(:form_ride_id)
         end
 
         it "adds an existing ride to the mechanic upon form completion, and refreshes the page" do
-            visit "/mechanics/#{@mechanic.id}"
+            visit mechanic_path(@mechanic.id)
 
             expect(page).to_not have_content(@ride_2.name)
 
