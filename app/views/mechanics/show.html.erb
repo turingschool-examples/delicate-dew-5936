@@ -1,0 +1,10 @@
+<h1><%= @mechanic.name %></h1>
+<h3>Years of Experience: <%= @mechanic.years_experience %></h3>
+<h3>Rides: <%= @mechanic.rides.pluck(:name).join(", ") %></h3><br>
+<h2>Add a ride to workload:</h2>
+<%= form_with url: "/mechanic_rides/", method: :post, data: { turbo: false } do |form| %>
+  <h3><%= form.label "Ride ID:" %></h3>
+  <h3><%= form.text_field :form_ride_id %></h3>
+  <h3><%= form.hidden_field :mechanic_id, value: @mechanic.id %></h3>
+  <h3><%= form.submit 'Submit' %></h3>
+<% end %>
