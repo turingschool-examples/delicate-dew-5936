@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Mechanic Show Page", type: :feature do
     before(:each) do
-        @mechanic_1 = Merchant.create(name: "Quin Nordmark", years_experience: 2)
+        @mechanic_1 = Mechanic.create(name: "Quin Nordmark", years_experience: 2)
         @amusement_park_1 = AmusementPark.create(name: "Gardens", admission_cost: 40)
         @ride_1 = @amusement_park_1.rides.create(name: "Upsider", thrill_rating: 3, open: true)
 
