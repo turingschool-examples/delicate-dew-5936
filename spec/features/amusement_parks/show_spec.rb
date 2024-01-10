@@ -16,7 +16,7 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
     
     it "Story 3 - Amusement Park Show page" do
         # When I visit an amusement park’s show page,
-        visit "/amusement_park/#{@amusement_park_1.id}"
+        visit "/amusement_parks/#{@amusement_park_1.id}"
         # Then I see the name and price of admissions for that amusement park
         expect(page).to have_content("Gardens")
         expect(page).to have_content("40")
@@ -24,6 +24,6 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
         expect(page).to have_content("Quin Nordmark")
         # And I see that the list of mechanics is unique
         # I don't know how to test for this
-        #save_and_open_page
+        save_and_open_page
     end
 end
