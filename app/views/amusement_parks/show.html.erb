@@ -1,0 +1,4 @@
+<h1><%= @park.name %></h1>
+<h3>Admission Cost: <%= @park.admission_cost %></h3>
+<h3>Rides: <%= @park.rides.pluck(:name).join(", ") %></h3>
+<h3>Mechanics: <%= @park.mechanics_working_at_park.pluck(:name).join(", ") %></h3><br>

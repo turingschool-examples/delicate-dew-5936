@@ -1,74 +1,63 @@
-# require "rails_helper"
+require "rails_helper"
 
-# RSpec.describe "the amusement parks show page" do
-#     describe "User Story 3" do
-#         # As a visitor,
-#         # When I visit an amusement park’s show page,
-#         # Then I see the name and price of admissions for that amusement park
-#         # And I see the names of all mechanics that are working on that park's rides,
-#         # And I see that the list of mechanics is unique
+RSpec.describe "the amusement parks show page" do
+    describe "User Story 3" do
+        # As a visitor,
+        # When I visit an amusement park’s show page,
+        # Then I see the name and price of admissions for that amusement park
+        # And I see the names of all mechanics that are working on that park's rides,
+        # And I see that the list of mechanics is unique
 
-#         before :each do
-#             @park = AmusementPark.create!(name: "Blonkoland", admission_cost: 20)
-#             @ride = @park.rides.create!(name: "The Pukinator", thrill_rating: 7, open: true)
-#             @mechanic = @ride.mechanics.create!(name: "Mario", years_experience: 32)
-#         end
+        before :each do
+            @park = AmusementPark.create!(name: "Blonkoland", admission_cost: 20)
+            @ride = @park.rides.create!(name: "The Pukinator", thrill_rating: 7, open: true)
+            @mechanic_1 = @ride.mechanics.create!(name: "Mario", years_experience: 32)
+            @mechanic_2 = @ride.mechanics.create!(name: "Luigi", years_experience: 29)
+            @mechanic_3 = @ride.mechanics.create!(name: "Jim Harbaugh", years_experience: 4)
+        end
     
-#         it "displays the amusement park's name" do
-#             visit "/mechanics/#{@mechanic.id}"
+        it "displays the amusement park's name" do
+            visit amusement_park_path(@park.id)
     
-#             expect(page).to have_content(@mechanic.name)
-#         end
+            expect(page).to have_content(@park.name)
+        end
     
-#         it "displays the mechanic's years of experience" do
-#             visit "/mechanics/#{@mechanic.id}"
+        it "displays the amusement park's admission cost" do
+            visit amusement_park_path(@park.id)
     
-#             expect(page).to have_content("Years of Experience: #{@mechanic.years_experience}")
-#         end
+            expect(page).to have_content("Admission Cost: #{@park.admission_cost}")
+        end
     
-#         it "displays the names of all rides the mechanic is working on" do
-#             @ride_2 = @park.rides.create!(name: "The Reverse Mortgage", thrill_rating: 10, open: false)
-#             @ride_3 = @park.rides.create!(name: "Bagman's Crumper", thrill_rating: 3, open: true)
-#             @mechanic.rides << @ride_2
+        it "displays the names of all rides in the park" do
+            @ride_2 = @park.rides.create!(name: "The Reverse Mortgage", thrill_rating: 10, open: false)
 
-#             visit "/mechanics/#{@mechanic.id}"
+            visit amusement_park_path(@park.id)
 
-#             expect(page).to have_content(@ride.name)
-#             expect(page).to have_content(@ride_2.name)
-#             expect(page).to_not have_content(@ride_3.name)
-#         end
-#     end
+            expect(page).to have_content(@ride.name)
+            expect(page).to have_content(@ride_2.name)
+            expect(page).to_not have_content("Bagman")
 
-#     describe "User Story 2" do
-#         # As a user,
-#         # When I go to a mechanic's show page
-#         # I see a form to add a ride to their workload
-#         # When I fill in that field with an id of an existing ride and click Submit
-#         # I’m taken back to that mechanic's show page
-#         # And I see the name of that newly added ride on this mechanic's show page.
+            @ride_3 = @park.rides.create!(name: "Bagman's Crumper", thrill_rating: 3, open: true)
 
-#         before :each do
-#             @park = AmusementPark.create!(name: "Blonkoland", admission_cost: 20)
-#             @ride = @park.rides.create!(name: "The Pukinator", thrill_rating: 7, open: true)
-#             @ride_2 = @park.rides.create!(name: "The Reverse Mortgage", thrill_rating: 10, open: false)
-#             @mechanic = @ride.mechanics.create!(name: "Mario", years_experience: 32)
-#         end
+            visit amusement_park_path(@park.id)
 
-#         it "shows a form to add an existing ride to the mechanic" do
-#             visit "/mechanics/#{@mechanic.id}"
-    
-#             expect(page).to have_field(:form_ride_id)
-#         end
+            expect(page).to have_content(@ride.name)
+            expect(page).to have_content(@ride_2.name)
+            expect(page).to have_content(@ride_3.name)
+        end
 
-#         it "adds an existing ride to the mechanic upon form completion, and refreshes the page" do
-#             visit "/mechanics/#{@mechanic.id}"
+        it "displays the names of all mechanics working in the park" do
+            @park_2 = AmusementPark.create!(name: "Derpis Hills", admission_cost: 20)
+            @ride_2 = @park_2.rides.create!(name: "Blongorgbulous", thrill_rating: 7, open: true)
+            @mechanic_4 = @ride_2.mechanics.create!(name: "John Harbaugh", years_experience: 4)
 
-#             expect(page).to_not have_content(@ride_2.name)
+            visit amusement_park_path(@park.id)
 
-#             fill_in :form_ride_id, with: "#{@ride_2.id}"
-#             click_button "Submit"
+            expect(page).to have_content(@mechanic_1.name)
+            expect(page).to have_content(@mechanic_2.name)
+            expect(page).to have_content(@mechanic_3.name)
+            expect(page).to_not have_content(@mechanic_4.name)
 
-#             expect(page).to have_content(@ride_2.name)
-#         end
-#     end
-# end
+        end
+    end
+end
