@@ -27,7 +27,7 @@ RSpec.describe "Mechanic Show Page", type: :feature do
         expect(page).to have_field("New ride", with: "id")
         expect(page).to have_button("Submit")
         # When I fill in that field with an id of an existing ride and click Submit
-        fill_in "New name", with: @ride_2.id
+        fill_in "New ride", with: @ride_2.id
         click_on("Submit")
         # I’m taken back to that mechanic's show page
         expect(page).to have_current_path("/mechanics/#{@mechanic_1.id}")
