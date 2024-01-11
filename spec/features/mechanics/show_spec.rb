@@ -37,7 +37,7 @@ RSpec.describe 'show spec', type: :feature do
       # I see a form to add a ride to their workload
       expect(page).to have_selector('form')
       # When I fill in that field with an id of an existing ride and click Submit
-      # require 'pry'; binding.pry
+      require 'pry'; binding.pry
       fill_in :id, with: ride_2.id
       click_on "Submit"
       # I’m taken back to that mechanic's show page

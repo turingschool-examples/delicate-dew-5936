@@ -2,9 +2,11 @@
 <p>Price: <%= @amus.admission_cost %> </p>
 
 
- <%= @amus.unq_mechs %>
+ <%# <%= @amus.unq_mechs %>
  
-<% @amus.each do |amu| %>
-    <h3><%= amu.name %></h3>
-    <p><%= amu.subscribed %></p>
-<% end %>
+<%# <% @amus.each do |amu| %>
+    <%# <h3><%= amu.name %></h3>
+    <%# <p><%= amu.subscribed %></p> %> %>
+<%# <% end %> %> %> %>
+ 
+ I'm aware this is a mess. I'm not 100% sure what needs to go here without the model method giving some direction. If I just needed to list the mechs that is simple enough but since you want them unique I need to make a model method to give me them only once. 
