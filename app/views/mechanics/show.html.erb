@@ -1,2 +1,16 @@
-<h1> Mechanic: @mechanic.name</h1>
-<p> 
+<h1> Mechanic: <%= @mechanic.name %></h1>
+<p> Years of Experience: <%= @mechanic.years_experience %> </p>
+
+<h3> Current rides they're working on: </h3>
+<% @mechanic.rides.each do |ride| %>
+    <h3><%= ride.name %></h3>
+<% end %>
+
+
+<h3> Add a ride to workload: </h3>
+<%= form_with url: mechanic_rides_path, method: :post do |f| %>
+  <%= f.label :id %>
+  <%= f.text_field :id %>
+
+  <%= f.submit "Submit"%>
+<% end %>

@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   # root "articles#index"
   # config/routes.rb
 
-resources :amusement_parks do
-  resources :rides
-end
+  resources :amusement_parks do
+    resources :rides
+  end
 
-resources :mechanics do
-  resources :rides, through: :ride_mechanics
-end
+  resources :mechanics do
+    resources :rides, through: :ride_mechanics
+  end
 end
