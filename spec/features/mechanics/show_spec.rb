@@ -12,6 +12,7 @@ RSpec.describe 'show spec', type: :feature do
       mech_1 = Mechanic.create!(name: "larry", years_experience: 11)
 
       RideMechanic.create!(ride: ride_1, mechanic: mech_1)
+      
       # When I visit a mechanic show page
       visit  mechanic_path(mech_1)
       # I see their name, years of experience, and the names of all rides they are working on.
@@ -28,6 +29,9 @@ RSpec.describe 'show spec', type: :feature do
       ride_2 = park.rides.create!(name: "The Zipper", thrill_rating: 7, open: false)
 
       mech_1 = Mechanic.create!(name: "larry", years_experience: 11)
+
+      RideMechanic.create!(ride: ride_1, mechanic: mech_1)
+
       # When I go to a mechanic's show page
       visit mechanic_path(mech_1)
       # I see a form to add a ride to their workload

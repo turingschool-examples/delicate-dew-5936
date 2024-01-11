@@ -1,0 +1,10 @@
+<h1> <%= @amus.name %></h1>
+<p>Price: <%= @amus.admission_cost %> </p>
+
+
+ <%= @amus.unq_mechs %>
+ 
+<% @amus.each do |amu| %>
+    <h3><%= amu.name %></h3>
+    <p><%= amu.subscribed %></p>
+<% end %>

@@ -8,7 +8,7 @@
 
 
 <h3> Add a ride to workload: </h3>
-<%= form_with url: mechanic_rides_path, method: :post do |f| %>
+<%= form_with url: mechanic_path(@mechanic), method: :post do |f| %>
   <%= f.label :id %>
   <%= f.text_field :id %>
 

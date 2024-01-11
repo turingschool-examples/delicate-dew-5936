@@ -1,7 +1,4 @@
 class RideMechanic < ApplicationRecord
   belongs_to :ride
-  belongs_to :mechanic
-
-  has_many :amusement_parks, through: :rides
-  
+  belongs_to :mechanic  
 end
