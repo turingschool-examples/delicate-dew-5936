@@ -3,4 +3,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # config/routes.rb
+
+resources :amusement_parks do
+  resources :rides
+end
+
+resources :mechanics do
+  resources :rides, through: :ride_mechanics
+end
 end
